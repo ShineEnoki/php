@@ -30,12 +30,18 @@
         <?php endif ?>
 
         <?php if(file_exists('_actions/photo/profile.jpg')) : ?>
-            <img 
-                src="_actions/photo/profile.jpg" 
-                alt="Profile photo"
-                class="img-thumbnail"
-                width="200"
-            >
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img 
+                        src="_actions/photo/profile.jpg" 
+                        alt="Profile photo"
+                        class="img-thumbnail"
+                        width="200"
+                        height="200"
+                    >
+                </div>
+            </div>
+            
         <?php endif ?>
 
         <form 

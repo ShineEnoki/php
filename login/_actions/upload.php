@@ -6,12 +6,11 @@ $type = $_FILES['photo']['type'];
    
 
     if($error){
-        // header('location: ../profile.php?error=file');
-        print_r($error);
+        header('location: ../profile.php?error=file');
     };
 
     if($type === 'image/jpeg' || $type === "image/png"){
-        move_uploaded_file($tmp, "photo/profile.jpg");
+        copy($tmp, "photo/profile.jpg");
         header('location: ../profile.php');
     } else{
         header('location: ../profile.php?error=type');
