@@ -1,0 +1,19 @@
+{
+    "name": "fw/shine",
+    "description": "login project with php",
+    "autoload": {
+        "psr-4": {
+            "Fw\\Shine\\": "src/",
+            "Libs\\": "_classes/Libs/",
+            "Helpers\\": "_classes/Helpers/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Shine",
+            "email": "thuriyac4@gmail.com"
+        }
+    ],
+    "require": {}
+
+}
