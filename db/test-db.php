@@ -10,7 +10,7 @@ $statement = $db->prepare($query);
 
 $statement->execute(
     [
-        ':name' => 'Boss',
+        ':name' => 'baby',
         ':value' => '999'
     ]
 );

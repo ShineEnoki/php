@@ -7,9 +7,7 @@ use PDOException;
 class UsersTable
 {
     private $db = null;
-    public function __construct(
-        MySQL $db
-    ){
+    public function __construct(MySQL $db){
         $this->db = $db->connect();
     }
 
@@ -19,7 +17,7 @@ class UsersTable
                         name, 
                         email, 
                         phone, 
-                        address, 
+                        address,
                         password, 
                         role_id, 
                         created_at
@@ -30,7 +28,7 @@ class UsersTable
                             :address, 
                             :password, 
                             :role_id, 
-                            NOW()
+                            Now()
                             )";
 
             $statement = $this->db->prepare($query);

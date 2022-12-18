@@ -12,11 +12,13 @@ class MySQL
     private $dbpass;
     private $db;
 
+    
+
     public function __construct(
-        $dbhost = 'localhost',
-        $dbuser = 'root',
-        $dbname = 'project',
-        $dbpass = '',
+        $dbhost = "localhost",
+        $dbuser = "root",
+        $dbname = "project",
+        $dbpass = "",
     ) {
         $this->dbhost = $dbhost;
         $this->dbuser = $dbuser;
@@ -29,13 +31,12 @@ class MySQL
     {
         try{
             $this->db = new PDO(
-                'mysql:host=$this->dbhost;dbname=$this->dbname',
+                'mysql:dbhost=$this->dbhost;dbname=$this->dbname',
                 $this->dbuser,
                 $this->dbpass,
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
-
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
                 ]
             );
             return $this->db;
