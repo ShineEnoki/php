@@ -4,7 +4,7 @@
     "autoload": {
         "psr-4": {
             "Fw\\Shine\\": "src/",
-            "Libs\\": "_classes/Libs/",
+            "Libs\\": "./_classes/Libs/",
             "Helpers\\": "_classes/Helpers/"
         }
     },

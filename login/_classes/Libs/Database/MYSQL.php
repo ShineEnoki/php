@@ -15,30 +15,28 @@ class MySQL
     
 
     public function __construct(
-        $dbhost = "localhost",
-        $dbuser = "root",
-        $dbname = "project",
+        $dbhost = 'localhost',
+        $dbuser = 'root',
+        $dbname = 'project',
         $dbpass = "",
     ) {
         $this->dbhost = $dbhost;
         $this->dbuser = $dbuser;
         $this->dbname = $dbname;
         $this->dbpass = $dbpass;
-        $this->db = null;
+        $this->db = Null;
     }
 
     public function connect()
     {
         try{
-            $this->db = new PDO(
-                'mysql:dbhost=$this->dbhost;dbname=$this->dbname',
-                $this->dbuser,
-                $this->dbpass,
-                [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-                ]
-            );
+            $this->db = new PDO('mysql:dbhost=localhost;dbname=project', 'root', '', [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+            ]);
+
+            
+
             return $this->db;
         } catch(PDOException $e){
             return $e->getMessage();

@@ -3,7 +3,7 @@
         'name' => 'fw/shine',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '72b36852b2f222720817d759c94e9b1f49b1cd7d',
+        'reference' => '53b1576be4b80a6896787985627c5cb22a417169',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'fw/shine' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '72b36852b2f222720817d759c94e9b1f49b1cd7d',
+            'reference' => '53b1576be4b80a6896787985627c5cb22a417169',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

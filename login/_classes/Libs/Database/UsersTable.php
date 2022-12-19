@@ -6,7 +6,7 @@ use PDOException;
 
 class UsersTable
 {
-    private $db = null;
+    private $db;
     public function __construct(MySQL $db){
         $this->db = $db->connect();
     }
@@ -50,4 +50,4 @@ class UsersTable
 
         return $statement->fetchAll();
     }
-}
+};
