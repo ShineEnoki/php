@@ -42,10 +42,10 @@ class UsersTable
 
     public function getAll()
     {
-        $statement = $this->db->query("SELECT 
-            user.*, roles.name as roles.value 
-            FROM user LEFT JOIN roles
-            ON users.role_id = roles.id
+        $statement = $this->db->query("
+        SELECT users.*, roles.name AS role, roles.value
+        FROM users LEFT JOIN roles
+        ON users.role_id = roles.id
         ");
 
         return $statement->fetchAll();
@@ -72,4 +72,17 @@ class UsersTable
         return $row ?? false;
         
     }
+
+    public function updatePhoto($id, $name){
+        $statement = $this->db->prepare("
+        UPDATE users SET photo=:name where id=:id");
+
+        $statement->execute([
+            ':name' => $name,
+            ':id'   => $id
+        ]);
+
+        return $statement->rowCount();
+    }
+
 };

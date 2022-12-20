@@ -1,10 +1,9 @@
 <?php
-    session_start();
+include('vendor/autoload.php');
 
-    if(!isset($_SESSION['user'])){
-        header('location: index.php');
-        exit();
-    }
+use Helpers\Auth;
+
+$auth = Auth::check();
 
 ?>
 
@@ -17,63 +16,64 @@
     <title>Profile</title>
 
     <link rel="stylesheet" href="CSS/bootstrap.min.css">
+
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="mb-3">Jhon Doe (Manager)</div>
+    <div class="container">
+        <h1 class="mt-5 mb-5">
+            <?= $auth->name ?>
+            <span class="fw-normal text-muted">
+                <?= $auth->role ?>
+            </span>
+        </h1>
 
-
-        <?php if (isset($_GET['error'])) : ?>
+        <?php if(isset($_GET['error'])) : ?>
             <div class="alert alert-warn">
-                Cannot Upload file
+                Cannot upload profile
             </div>
         <?php endif ?>
 
-        <?php if(file_exists('_actions/photo/profile.jpg')) : ?>
-            <div class="d-flex justify-content-center">
-                <div>
-                    <img 
-                        src="_actions/photo/profile.jpg" 
-                        alt="Profile photo"
-                        class="img-thumbnail"
-                        width="200"
-                        height="200"
-                    >
-                </div>
-            </div>
-            
+        <?php if($auth->photo) : ?>
+            <img 
+                src="_actions/photo/<?= $auth->photo ?>" 
+                alt="Profile Photo"
+                class="img-thumbnail mb-3"
+                width="200"
+            >
         <?php endif ?>
 
         <form 
             action="_actions/upload.php" 
-            method="post"
+            method="POST"
             enctype="multipart/form-data"
         >
             <div class="input-group mb-3">
-                <input type="file" name="photo" class="form-control">
-                <button class="btn btn-primary">Upload</button>
+                <input 
+                    type="file"
+                    name="photo"
+                    class="form-control"
+                >
+                <button type="submit" class="btn btn-secondary ">Upload</button>
             </div>
-            
         </form>
-
 
         <ul class="list-group">
             <li class="list-group-item">
-                <b>Email:</b> john.doe@gmail.com
+                <b>Email :</b> <?= $auth->email ?>
             </li>
-
             <li class="list-group-item">
-                <b>Phone:</b> (09) 243 867 645
+                <b>Phone :</b> <?= $auth->phone ?>
             </li>
-
             <li class="list-group-item">
-                <b>Address:</b> No. 321, Main Street, West City
+                <b>Address :</b> <?= $auth->address ?>
             </li>
         </ul>
-
         <br>
 
+        <a href="./admin.php">Manage User</a>
         <a href="_actions/logout.php">Logout</a>
+
+
     </div>
 </body>
 </html>
